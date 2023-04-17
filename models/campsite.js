@@ -6,9 +6,9 @@ const Currency = mongoose.Types.Currency;
 
 const commentSchema = new Schema({
     rating: {
-        type: Number, 
+        type: Number,
         min: 1,
-        max: 5, 
+        max: 5,
         required: true
     },
     text: {
@@ -20,8 +20,9 @@ const commentSchema = new Schema({
         ref: 'User'
     }
 }, {
-    timestamps: true   
+    timestamps: true
 });
+
 const campsiteSchema = new Schema({
     name: {
         type: String,

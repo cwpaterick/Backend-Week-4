@@ -23,16 +23,6 @@ app.set('secPort', port+443);
  * Create HTTP server.
  */
 
-var server = http.createServer(app);
-
-/**
- * Listen on provided port, on all network interfaces.
- */
-
-server.listen(port);
-server.on('error', onError);
-server.on('listening', onListening);
-
 /**
  * Create HTTPS server.
  */ 
@@ -49,10 +39,20 @@ const secureServer = https.createServer(options, app);
  */
 
 secureServer.listen(app.get('secPort'), () => {
-  console.log('Server listening on port', app.get('secPort'));
+   console.log('Server listening on port', app.get('secPort'));
 });
 secureServer.on('error', onError);
 secureServer.on('listening', onListening);
+
+var server = http.createServer(app);
+
+/**
+ * Listen on provided port, on all network interfaces.
+ */
+
+server.listen(port);
+server.on('error', onError);
+server.on('listening', onListening);
 
 /**
  * Normalize a port into a number, string, or false.
